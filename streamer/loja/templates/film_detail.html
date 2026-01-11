@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_all.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Catalog</title>
+</head>
+<body>
+    
+    <div class="container-custom">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ movie.poster_url.url }}" class="img-fluid rounded shadow-lg" alt="{{ movie.name }}">
+            </div>
+            
+            <div class="col-md-8">
+                <h1 class="display-4 fw-bold">{{ movie.name }}</h1>
+                <div class="d-flex gap-3 mb-3 text-secondary">
+                    <span>{{ movie.release_year }}</span>
+                    <span class="badge bg-danger">{{ movie.age_rating }}+</span>
+                    <span>{{ movie.duration }} min</span>
+                </div>
+                
+                <p class="lead">{{ movie.description }}</p>
+
+                <div class="d-flex gap-2 mt-4">
+                    <a href="{{ movie.link }}" class="btn btn-primary-nf">Assistir Agora</a>
+                    <a href="{{ movie.trailer_url }}" class="btn btn-outline-light">Trailer</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 glass-panel">
+            <h3>Comentários</h3>
+            <form action="{% url 'comment' movie.id %}" method="POST" class="mb-4">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" name="comment" class="form-control input-nf" placeholder="Adicione um comentário...">
+                    <button class="btn-primary-nf">Enviar</button>
+                </div>
+            </form>
+
+            {% for com in comments %}
+                <div class="p-3 mb-2 border-start border-danger border-3 bg-dark">
+                    <strong class="text-danger">{{ com.profile.name }}</strong>
+                    <p class="mb-0">{{ com.text_coment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

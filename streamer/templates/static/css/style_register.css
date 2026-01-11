@@ -1,0 +1,7 @@
+.login-container {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 60px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+}

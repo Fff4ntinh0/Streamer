@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_create.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style_all.css'%}">
+    <title>Create</title>
+</head>
+<body>
+    <form action="{% url 'create'%}" method= "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+                <label for="name"> NAME</label>
+                <input type="text" name="name" id="name" placeholder="The flower" required>
+            </div>
+
+            <div class="input-group">
+                <label for="event-date">RELEASE DATA</label>
+                <input type="date" name="event_date" id="event-date" required>
+            </div>
+
+            <div class="input-group">
+                <label for="trailer">TRAILER</label>
+                <input type="url" name="trailer" id="trailer" placeholder="www.site/trailer" required>
+            </div>
+
+            <div class="input-group">
+                <label for="poster">POSTER</label>
+                <input type="file" name="poster" id="poster" placeholder="C:SOMETHING/file.png" required>
+            </div>
+
+            <div class="input-group">
+                <label for="description">DESCRIPTION</label>
+                <input type="text" name="description" id="description" placeholder="The flower is a awesome flower" required>
+            </div>
+
+            <div class="input-group">
+                <label for="age">AGE RATING</label>
+                <input type="number" name="age" id="age" placeholder="10" required>
+            </div>
+
+           <div class="input-group">
+                <label for="duration">DURATION</label>
+                <input type="number" name="duration" id="duration" placeholder="120" required>
+            </div>
+
+            <div class="input-group">
+                <label for="type">IS A FILM ?</label>
+                <input type="checkbox" name="type" id="type">
+            </div>
+
+           <div class="input-group">
+                <label>GENRE</label>
+
+                {% for g in genres %}
+                <label>
+                    <input type="checkbox" name="genre[]" value="{{ g.id }}">
+                    {{ g.name }}
+                </label>
+                {% endfor %}
+            </div>
+
+            <div class="input-group">
+                <label for="link">LINK</label>
+                <input type="text" name="link" id="link" placeholder="www.site/film.mp4" required>
+            </div>
+
+            <button type="submit">SAVE</button>
+
+            {% if error %}
+            <p style="color:red;">{{ error }}</p>
+            {% endif %}
+    </form>
+    <form action="{% url 'configout'%}">
+        <button>Get out</button>
+    </form>
+    
+</body>
+</html>

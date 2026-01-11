@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --netflix-red: #E50914;
+    --netflix-black: #141414;
+    --netflix-grey: #333333;
+    --netflix-white: #FFFFFF;
+}
+
+body {
+    background: radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(20,20,20,1) 100%), 
+                url('https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bca1-0746f33e54c4/fda33355-6804-4537-889d-72f1cf59b4c0/BR-pt-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--netflix-white);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 60px 68px 40px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+.input-group {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #8c8c8c;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    background: var(--netflix-grey);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+}
+
+input:focus {
+    background: #454545;
+    outline: none;
+    border-bottom: 2px solid #e87c03;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 24px;
+    background-color: var(--netflix-red);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #f6121d;
+}
+
+.footer {
+    margin-top: 25px;
+    color: #737373;
+    font-size: 16px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+#error_mensage1 {
+    color: #e87c03;
+    font-size: 14px;
+    margin-top: 15px;
+    text-align: center;
+}

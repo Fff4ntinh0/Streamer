@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_register.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style_all.css'%}">
+    <title>First Welcome</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>REGISTER</h1>
+        
+        <form action="{% url 'register'%}" method="POST">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label for="name"> COMPLETE NAME</label>
+                <input type="text" name="name" id="name" placeholder="Yuri Nakamoto" required>
+            </div>
+
+            <div class="input-group">
+                <label for="event-date">DATE</label>
+                <input type="date" name="event_date" id="event-date" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">EMAIL</label>
+                <input type="email" name="email" id="email" placeholder="your@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" name="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm_password">CONFIRM PASSWORD</label>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" required>
+            </div>
+
+            {% if error %}
+            <h4 id="error_mensage">{{ error }}</h4>
+            {% endif %}
+
+
+            <button type="submit">SIGN UP</button>
+        </form>
+
+        <div class="footer">
+            Have an account? <a href="{% url 'login' %}">Sign in</a>
+        </div>
+    </div>
+</body>
+</html>

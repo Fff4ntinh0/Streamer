@@ -1,0 +1,10 @@
+.carousel-item img {
+    height: 70vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: drop-shadow(0 0 5px black);
+}

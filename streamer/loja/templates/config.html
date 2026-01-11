@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_config.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style_all.css'%}">
+    <title>Settings</title>
+</head>
+<body>
+    <form action="{% url 'config'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input-group">
+                <label for="name"> USER NAME</label>
+                <input type="text" name="username" id="username" placeholder="Y@121" value="{{ profile.name }}"required>
+        </div>
+        <div class="input-group">
+                <label for="file"> PROFILE IMAGE</label>
+                <input type="file" name="file" id="file" placeholder="myimage.png">
+        </div>
+        <button>Change your Profile</button>
+    </form>
+    <h3>USERNAME: {{ profile.name }}</h3>
+    <h3>AGE RATTING: {{ profile.age_rating }}</h3>
+    <div>
+        <h3>PROFILE IMAGE</h3>
+        {% if profile.arq %}
+            <img src="{{ profile.arq.url }}" width="150">
+        {% endif %}
+    </div>
+    <form action="{% url 'configout'%}" >
+        <button>RETURN</button>
+    </form>
+</body>
+</html>
